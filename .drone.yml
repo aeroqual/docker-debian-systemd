@@ -1,0 +1,17 @@
+kind: pipeline
+name: default
+
+steps:
+- name: docker-debian-systemd
+  image: plugins/ecr
+  settings:
+    access_key:
+      from_secret: aws_sandbox_ecr_publisher_access_key_id
+    secret_key:
+      from_secret: aws_sandbox_ecr_publisher_secret_access_key
+    repo: docker-debian-systemd
+    registry: 667997911389.dkr.ecr.ap-southeast-2.amazonaws.com
+    region: ap-southeast-2
+    tags:
+      - latest
+      - 1

@@ -25,7 +25,7 @@
 # (pointing to the current stable release) of the parent image will be used.
 # However, an alternate parent tag may be set by defining the 'TAG' build
 # argument to a specific Debian release, e.g. 'stretch' or 'buster'.
-ARG  TAG=latest
+ARG  TAG=9.4
 FROM debian:${TAG}
 
 
@@ -53,10 +53,10 @@ RUN echo 'debconf debconf/frontend select teletype' | debconf-set-selections
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y --no-install-recommends \
-        systemd      \
-        systemd-sysv \
-        cron         \
-        anacron
+    systemd      \
+    systemd-sysv \
+    cron         \
+    anacron
 
 RUN apt-get clean
 RUN rm -rf                        \
